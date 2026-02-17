@@ -36,9 +36,48 @@ jobs:
           cp -f config.json dist/config.json
           cp -f CNAME dist/CNAME
 
+          python3 - <<'PY'
+          import json
+          import html
+          import pathlib
+          import re
+
+          index_path = pathlib.Path("dist/index.html")
+          config_path = pathlib.Path("dist/config.json")
+          cname_path = pathlib.Path("dist/CNAME")
+
+          cfg = json.loads(config_path.read_text(encoding="utf-8"))
+          title = cfg.get("metaTitle") or cfg.get("wordmark") or "Site"
+          desc = cfg.get("metaDescription") or "Signal node."
+          domain = cname_path.read_text(encoding="utf-8").strip()
+          url = f"https://{domain}/" if domain else ""
+
+          content = index_path.read_text(encoding="utf-8")
+
+          def upsert_meta(doc, attr, key, value):
+              escaped = html.escape(value, quote=True)
+              pat = rf'<meta\\s+{attr}="{re.escape(key)}"\\s+content="[^"]*"\\s*/?>'
+              repl = f'<meta {attr}="{key}" content="{escaped}" />'
+              if re.search(pat, doc):
+                  return re.sub(pat, repl, doc, count=1)
+              return doc.replace("</head>", f"  {repl}\\n</head>", 1)
+
+          content = re.sub(r"<title>.*?</title>", f"<title>{html.escape(title)}</title>", content, count=1, flags=re.S)
+          content = upsert_meta(content, "name", "description", desc)
+          content = upsert_meta(content, "property", "og:title", title)
+          content = upsert_meta(content, "property", "og:description", desc)
+          content = upsert_meta(content, "name", "twitter:title", title)
+          content = upsert_meta(content, "name", "twitter:description", desc)
+          if url:
+              content = upsert_meta(content, "property", "og:url", url)
+
+          index_path.write_text(content, encoding="utf-8")
+          PY
+
           test -f dist/index.html
           test -f dist/assets/style.css
           test -f dist/assets/site.js
+          test -f dist/assets/og-share.svg
           test -f dist/config.json
           test -f dist/CNAME
 
