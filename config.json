@@ -1,0 +1,31 @@
+{
+  "metaTitle": "K3TABYT3",
+  "metaDescription": "Atelier artifacts. One-off hand-built garments as engineered signal objects.",
+  "wordmark": "K3TABYT3",
+  "tagline": "Atelier. One-off hand-built artifacts. Ketabyte: ketamine + byte fusion.",
+  "heroLine": "Garments as signal objects.",
+  "heroSub": "Handmade in the atelier. Numbered builds. No mass production. No seasons.",
+  "nav": [
+    { "label": "Builds", "href": "#builds", "external": false },
+    { "label": "Practice", "href": "#practice", "external": false },
+    { "label": "Contact", "href": "mailto:atelier@k3tabyt3.com", "external": true }
+  ],
+  "sections": [
+    {
+      "kicker": "builds",
+      "title": "Build index",
+      "body": "K3-001… one-off artifacts fabricated by hand.",
+      "links": [
+        { "label": "HVLI3N", "href": "https://hvli3n.com", "external": true }
+      ]
+    },
+    {
+      "kicker": "practice",
+      "title": "Atelier discipline",
+      "body": "Each piece is constructed, documented, and archived like an engineering build.",
+      "links": []
+    }
+  ],
+  "footerLeft": "K3TABYT3 / ATELIER",
+  "footerRight": "hand-built only"
+}
