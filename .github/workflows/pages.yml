@@ -60,7 +60,7 @@ jobs:
               repl = f'<meta {attr}="{key}" content="{escaped}" />'
               if re.search(pat, doc):
                   return re.sub(pat, repl, doc, count=1)
-              return doc.replace("</head>", f"  {repl}\\n</head>", 1)
+              return doc.replace("</head>", f"  {repl}\n</head>", 1)
 
           content = re.sub(r"<title>.*?</title>", f"<title>{html.escape(title)}</title>", content, count=1, flags=re.S)
           content = upsert_meta(content, "name", "description", desc)
