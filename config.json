@@ -6,9 +6,16 @@
   "heroLine": "Garments as signal objects.",
   "heroSub": "Handmade in the atelier. Numbered builds. No mass production. No seasons.",
   "nav": [
-    { "label": "Builds", "href": "#builds", "external": false },
-    { "label": "Practice", "href": "#practice", "external": false },
-    { "label": "Contact", "href": "mailto:atelier@k3tabyt3.com", "external": true }
+    {
+      "label": "HVLI3N",
+      "href": "https://hvli3n.com",
+      "external": true
+    },
+    {
+      "label": "CONTACT RECORDZ",
+      "href": "https://contactrecordz.com",
+      "external": true
+    }
   ],
   "sections": [
     {
@@ -16,7 +23,11 @@
       "title": "Build index",
       "body": "K3-001… one-off artifacts fabricated by hand.",
       "links": [
-        { "label": "HVLI3N", "href": "https://hvli3n.com", "external": true }
+        {
+          "label": "HVLI3N",
+          "href": "https://hvli3n.com",
+          "external": true
+        }
       ]
     },
     {
